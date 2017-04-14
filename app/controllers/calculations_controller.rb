@@ -7,17 +7,26 @@ class CalculationsController < ApplicationController
     # ================================================================================
     # Your code goes below.
     # The text the user input is in the string @text.
+    # The @ is what allows us to communicate with the browser
     # The special word the user input is in the string @special_word.
     # ================================================================================
 
 
-    @word_count = "Replace this string with your answer."
+    @word_count = @text.split.size
+    # Could also do: text_split_into_array = @text; then @word_count = text_split_into_array.size(or .length or .count)
 
-    @character_count_with_spaces = "Replace this string with your answer."
+    text_to_string = s=@text
+    @character_count_with_spaces = text_to_string.strip.length
 
-    @character_count_without_spaces = "Replace this string with your answer."
+    string_without_spaces = text_to_string.gsub(" ","")
+    @character_count_without_spaces = string_without_spaces.length
 
-    @occurrences = "Replace this string with your answer."
+    string_as_downcase = text_to_string.downcase
+    string_without_special_characters = string_as_downcase.gsub(/[^a-z0-9\s]/i,"")
+    array_of_text = string_without_special_characters.split
+    special_word_as_downcase = @special_word.downcase
+    list_of_occurences = array_of_text.grep(special_word_as_downcase)
+    @occurrences = list_of_occurences.count
 
     # ================================================================================
     # Your code goes above.
@@ -37,6 +46,8 @@ class CalculationsController < ApplicationController
     # The number of years the user input is in the integer @years.
     # The principal value the user input is in the decimal @principal.
     # ================================================================================
+
+    apr_as_decimal = @apr*0.01
 
     @monthly_payment = "Replace this string with your answer."
 
