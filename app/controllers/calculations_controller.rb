@@ -75,12 +75,18 @@ class CalculationsController < ApplicationController
     #   number of seconds as a result.
     # ================================================================================
 
-    @seconds = "Replace this string with your answer."
-    @minutes = "Replace this string with your answer."
-    @hours = "Replace this string with your answer."
-    @days = "Replace this string with your answer."
-    @weeks = "Replace this string with your answer."
-    @years = "Replace this string with your answer."
+    time_in_seconds = @ending-@starting
+    @seconds = time_in_seconds
+    time_in_minutes = @seconds/60
+    @minutes = time_in_minutes
+    time_in_hours = @minutes/60
+    @hours = time_in_hours
+    time_in_days = @hours/24
+    @days = time_in_days
+    time_in_weeks = @days/7
+    @weeks = time_in_weeks
+    time_in_years = @days/365.25
+    @years = time_in_years
 
     # ================================================================================
     # Your code goes above.
