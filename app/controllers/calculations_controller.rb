@@ -48,8 +48,12 @@ class CalculationsController < ApplicationController
     # ================================================================================
 
     apr_as_decimal = @apr*0.01
+    monthly_rate = apr_as_decimal/12
+    numerator = monthly_rate*@principal
+    months = @years*12
+    denominator = 1-(1+monthly_rate)**-months
 
-    @monthly_payment = "Replace this string with your answer."
+    @monthly_payment = numerator/denominator
 
     # ================================================================================
     # Your code goes above.
